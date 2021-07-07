@@ -1,5 +1,5 @@
 {
-  "name": "curl-to-firecamp",
+  "name": "@firecamp/curl-to-firecamp",
   "version": "0.0.2",
   "description": "Transform curl request to Firecamp request.",
   "main": "build/main/index.js",
