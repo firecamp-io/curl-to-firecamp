@@ -25,6 +25,17 @@ export class CurlToFirecamp {
         }
       }
     }
+    if (contentType.includes("application/x-www-form-urlencoded")) {
+      return {
+        "name": "Default",
+        "active_type": contentType,
+        "body_types": {
+          "application/x-www-form-urlencoded": {
+            "value": body
+          }
+        }
+      }
+    }
     return undefined;
   }
 
@@ -48,7 +59,8 @@ export class CurlToFirecamp {
 
 // const curl = `curl --request POST \
 //       --url https://jsonplaceholder.typicode.com/posts \
-//       --header 'content-type: application/json' \
-//       --data '{ "userId": 1, "id": 1 }'`;
+//       --header 'content-type: application/x-www-form-urlencoded' \
+//       --data name=Ratan \
+//       --data surname=Tata`;
 // const transform = new CurlToFirecamp(curl).toJSON();
 // console.log(transform, "transform")

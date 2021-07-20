@@ -72,4 +72,41 @@ describe('Transform', () => {
     expect(parsedCurl.transform()).toStrictEqual(expectedFirecamp);
   })
 
+  test("should transform urlencoded body", () => {
+    const curl = `curl --request POST \
+      --url https://jsonplaceholder.typicode.com/posts \
+      --header 'content-type: application/x-www-form-urlencoded' \
+      --data name=Ratan \
+      --data surname=Tata`;
+
+    const expectedJSON = {
+      "method": "POST",
+      "header": {
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      "url": "https://jsonplaceholder.typicode.com/posts",
+      "body": 'name=Ratan&surname=Tata'
+    }
+    const expectedFirecamp = {
+      "url": "https://jsonplaceholder.typicode.com/posts",
+      "method": "POST",
+      "headers": [
+        { "name": "content-type", "value": "application/x-www-form-urlencoded" }
+      ],
+      "bodies": [{
+        "name": "Default",
+        "active_type": "application/x-www-form-urlencoded",
+        "body_types": {
+          "application/x-www-form-urlencoded": {
+            "value": 'name=Ratan&surname=Tata'
+          }
+        }
+      }]
+    }
+
+    let parsedCurl = new CurlToFirecamp(curl);
+    expect(parsedCurl.toJSON()).toStrictEqual(expectedJSON);
+    expect(parsedCurl.transform()).toStrictEqual(expectedFirecamp);
+  })
+
 });
