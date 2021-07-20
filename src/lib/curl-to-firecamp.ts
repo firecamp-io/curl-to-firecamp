@@ -12,6 +12,22 @@ export class CurlToFirecamp {
     this.curlJSON = parsedCurl(curl)
   }
 
+  transformRequestBody(body: string, contentType: string) {
+    if (!body) return undefined;
+    if (contentType.includes("application/json")) {
+      return {
+        "name": "Default",
+        "active_type": contentType,
+        "body_types": {
+          "application/json": {
+            "value": body
+          }
+        }
+      }
+    }
+    return undefined;
+  }
+
   transform() {
     let { url, method, header = {}, body } = this.curlJSON;
     let fcFormat: any = {
@@ -20,25 +36,9 @@ export class CurlToFirecamp {
       headers: Object.keys(header).map(k => ({ name: k, value: header[k] }))
     }
     if (body) {
-      fcFormat.bodies = [this.transformBody(body, header["Content-Type"] || header["content-type"])];
+      fcFormat.bodies = [this.transformRequestBody(body, header["Content-Type"] || header["content-type"])];
     }
     return fcFormat;
-  }
-
-  transformBody(body: string, contentType: string) {
-    if (!body) return undefined;
-    if (contentType.includes("application/json")) {
-      return {
-        "name": "Default",
-        "active_type": "application/json",
-        "body_types": {
-          "application/json": {
-            "value": '{ "post_id": 123  }'
-          }
-        }
-      }
-    }
-    return undefined;
   }
 
   toJSON() {
@@ -46,3 +46,9 @@ export class CurlToFirecamp {
   }
 }
 
+// const curl = `curl --request POST \
+//       --url https://jsonplaceholder.typicode.com/posts \
+//       --header 'content-type: application/json' \
+//       --data '{ "userId": 1, "id": 1 }'`;
+// const transform = new CurlToFirecamp(curl).toJSON();
+// console.log(transform, "transform")

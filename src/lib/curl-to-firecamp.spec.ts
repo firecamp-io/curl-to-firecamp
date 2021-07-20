@@ -37,20 +37,21 @@ describe('Transform', () => {
   });
 
   test("should transform json body", () => {
-    const curl = `curl 'http://google.com/' \
-    -H 'Content-Type: application/json' \
-    --data "{ "post_id": 123  }"`;
+    const curl = `curl --request POST \
+      --url https://jsonplaceholder.typicode.com/posts \
+      --header 'Content-Type: application/json' \
+      --data '{ "userId": 1, "id": 1 }'`;
 
     const expectedJSON = {
       "method": "POST",
       "header": {
         "Content-Type": "application/json",
       },
-      "url": "http://google.com/",
-      "body": "{ post_id: 123  }"
+      "url": "https://jsonplaceholder.typicode.com/posts",
+      "body": '{ "userId": 1, "id": 1 }'
     }
     const expectedFirecamp = {
-      "url": "http://google.com/",
+      "url": "https://jsonplaceholder.typicode.com/posts",
       "method": "POST",
       "headers": [
         { "name": "Content-Type", "value": "application/json" }
@@ -60,7 +61,7 @@ describe('Transform', () => {
         "active_type": "application/json",
         "body_types": {
           "application/json": {
-            "value": '{ "post_id": 123  }'
+            "value": '{ "userId": 1, "id": 1 }'
           }
         }
       }]

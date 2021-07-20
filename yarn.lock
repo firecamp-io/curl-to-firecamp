@@ -4578,10 +4578,9 @@ parent-module@^1.0.0:
   dependencies:
     callsites "^3.0.0"
 
-parse-curl@^0.2.6:
+"parse-curl@https://github.com/firecamp-forks/parse-curl.js.git":
   version "0.2.6"
-  resolved "https://registry.yarnpkg.com/parse-curl/-/parse-curl-0.2.6.tgz#bf755ae6b572de2745daf6b98af144dff32d225b"
-  integrity sha512-ENhXeIxG4A6wFvYSU87b0o3Tp6U+Wup069GYhXCn0ZP/E7evfvomTSM/MeEOs3QTyuye+u2r7fFRj6nX0q9kQA==
+  resolved "https://github.com/firecamp-forks/parse-curl.js.git#f4b9d89e953b49d7eae7e3d529795cf0987fd92b"
   dependencies:
     shellwords "^0.1.0"
 

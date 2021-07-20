@@ -3,6 +3,7 @@
   "version": "0.0.9",
   "description": "Transform curl request to Firecamp request.",
   "main": "build/main/index.js",
+  "type": "module",
   "typings": "build/main/index.d.ts",
   "_module": "build/module/index.js",
   "repository": "https://github.com/firecamp-io/curl-to-firecamp",
@@ -43,7 +44,7 @@
   },
   "dependencies": {
     "@bitauth/libauth": "^1.17.1",
-    "parse-curl": "^0.2.6"
+    "parse-curl": "https://github.com/firecamp-forks/parse-curl.js.git"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
