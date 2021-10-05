@@ -1,6 +1,6 @@
 // import  from 'jest';
 
-import { CurlToFirecamp } from './curl-to-firecamp';
+import { CurlToFirecamp } from '../lib';
 
 
 describe('Transform', () => {
