@@ -4667,7 +4667,7 @@ parent-module@^1.0.0:
 
 "parse-curl@https://github.com/firecamp-forks/parse-curl.js.git":
   version "0.2.6"
-  resolved "https://github.com/firecamp-forks/parse-curl.js.git#7bf52fddc3256ba49363dc2dc42dee325bb0786e"
+  resolved "https://github.com/firecamp-forks/parse-curl.js.git#964f14abdbe7cbbe43dacc926c694bba773f410d"
   dependencies:
     shellwords "^0.1.0"
 
