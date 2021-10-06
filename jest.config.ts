@@ -1,4 +1,4 @@
-import type { Config } from '@jest/types';
+import type { Config } from '@jest/types'
 
 // Sync object
 const config: Config.InitialOptions = {
@@ -12,6 +12,10 @@ const config: Config.InitialOptions = {
     transform: {
         "^.+\\.(ts|tsx)$": "ts-jest"
     },
+    modulePathIgnorePatterns: [
+        './src/lib/__tests__/auth/__mocks__/',
+        './src/lib/__tests__/body/__mocks__/'
+    ],
     collectCoverageFrom: [
         "**/*.{js,jsx,ts,tsx}",
         "!**/*.d.ts",
@@ -23,5 +27,5 @@ const config: Config.InitialOptions = {
         },
     },
     verbose: true,
-};
-export default config;
+}
+export default config
