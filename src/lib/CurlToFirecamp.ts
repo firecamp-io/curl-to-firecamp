@@ -72,6 +72,8 @@ export class CurlToFirecamp implements ICurlToFirecamp {
   }
 
   transform(): any {
+    if (!this.curlJSON) return
+
     const { url, method, header = {}, body } = this.curlJSON
 
     // Rest request
