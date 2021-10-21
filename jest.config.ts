@@ -14,7 +14,8 @@ const config: Config.InitialOptions = {
     },
     modulePathIgnorePatterns: [
         './src/lib/__tests__/auth/__mocks__/',
-        './src/lib/__tests__/body/__mocks__/'
+        './src/lib/__tests__/body/__mocks__/',
+        './src/lib/__tests__/query/__mocks__/'
     ],
     collectCoverageFrom: [
         "**/*.{js,jsx,ts,tsx}",
