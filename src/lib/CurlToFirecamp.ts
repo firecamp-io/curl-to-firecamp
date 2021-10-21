@@ -1,12 +1,16 @@
 
 import parseCurl from 'parse-curl'
 import { parse } from 'querystring'
-import { constants, table } from '@firecamp/utility'
+import { constants, helpers, table } from '@firecamp/utility'
 import { url as _url } from '@firecamp/url'
 import { nanoid as uuid } from "nanoid"
+import _cloneDeep from "lodash/cloneDeep"
+import _merge from "lodash/merge"
 import { ICurlToFirecamp, IRestLeaf, ITableRow } from './CurlToFirecamp.interface'
+import { AuthState, BodyState } from './react-state'
 
 const { RequestTypes } = constants
+const { isValidArray, isValidObject } = helpers
 
 export class CurlToFirecamp implements ICurlToFirecamp {
 
@@ -134,6 +138,23 @@ export class CurlToFirecamp implements ICurlToFirecamp {
     }
 
     restRequest.bodies[restRequest.meta.active_body]._meta.request_uuid = restRequest._meta.uuid
+
+    // Add body_types, response in body if not exist
+    if (isValidArray(restRequest.bodies)) {
+      restRequest.bodies.map((leaf: any) => {
+        if (!leaf.body || !isValidObject(leaf.body))
+          leaf.body = _cloneDeep(BodyState)
+        else {
+          leaf.body = _merge(_cloneDeep(BodyState), leaf.body)
+        }
+
+        if (!leaf?.meta?.active_body_type)
+          leaf.meta.active_body_type = 'noBody'
+      })
+    }
+
+    // Merge auth state for populate request
+    restRequest.auth = _merge(_cloneDeep(AuthState), restRequest.auth)
 
     return restRequest
   }
