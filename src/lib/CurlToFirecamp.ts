@@ -102,6 +102,11 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         active_body: uuid(),
         type: RequestTypes.REST,
         version: '1.0'
+      },
+      _meta: {
+        uuid: uuid(),
+        project_uuid: '',
+        module_uuid: ''
       }
     }
 
