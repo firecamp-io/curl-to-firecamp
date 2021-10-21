@@ -12,7 +12,13 @@ export interface IRestLeaf {
         is_default?: boolean
         active_body_type: string
     }
-    body: any
+    body: any,
+    _meta: {
+        uuid: string,
+        project_uuid: string,
+        request_type: 'A',
+        request_uuid: string,
+    }
 }
 
 export interface ICurlToFirecamp {

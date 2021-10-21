@@ -39,6 +39,12 @@ export class CurlToFirecamp implements ICurlToFirecamp {
             'value': body || '',
             'headers': []
           }
+        },
+        _meta: {
+          uuid: uuid(),
+          request_uuid: '',
+          request_type: RequestTypes.REST,
+          project_uuid: ''
         }
       }
 
@@ -53,6 +59,12 @@ export class CurlToFirecamp implements ICurlToFirecamp {
             'value': [],
             'headers': []
           }
+        },
+        _meta: {
+          uuid: uuid(),
+          request_uuid: '',
+          request_type: RequestTypes.REST,
+          project_uuid: ''
         }
       }
 
@@ -66,7 +78,13 @@ export class CurlToFirecamp implements ICurlToFirecamp {
           'is_default': true,
           'active_body_type': 'no_body'
         },
-        'body': ''
+        'body': '',
+        _meta: {
+          uuid: uuid(),
+          request_uuid: '',
+          request_type: RequestTypes.REST,
+          project_uuid: ''
+        }
       }
     }
   }
@@ -114,6 +132,8 @@ export class CurlToFirecamp implements ICurlToFirecamp {
     restRequest.bodies = {
       [restRequest.meta.active_body]: this.transformRequestBody(body, header['Content-Type'] || header['content-type'])
     }
+
+    restRequest.bodies[restRequest.meta.active_body]._meta.request_uuid = restRequest._meta.uuid
 
     return restRequest
   }
