@@ -1,4 +1,4 @@
-import { AUTH_TYPES, BODY_TYPES } from '../../../constants'
+import { AUTH_TYPES, BODY_TYPES } from '../constants'
 
 export const AuthState = {
   [AUTH_TYPES.BEARER]: {
