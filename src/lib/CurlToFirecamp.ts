@@ -30,7 +30,7 @@ export class CurlToFirecamp implements ICurlToFirecamp {
     }
   }
 
-  transformRequestBody(body: string, contentType: string): IRestLeaf {
+  transformRequestBody(body: any, contentType: string): IRestLeaf {
     switch (contentType) {
       case 'application/json': return {
         'name': 'Default',
@@ -52,29 +52,57 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         }
       }
 
-      case 'application/x-www-form-urlencoded': const _body = {
-        'name': 'Default',
-        'meta': {
-          'is_default': true,
-          'active_body_type': contentType
-        },
-        'body': {
-          'application/x-www-form-urlencoded': {
-            'value': [],
-            'headers': []
+      case 'application/x-www-form-urlencoded': {
+        const _body = {
+          'name': 'Default',
+          'meta': {
+            'is_default': true,
+            'active_body_type': contentType
+          },
+          'body': {
+            'application/x-www-form-urlencoded': {
+              'value': [],
+              'headers': []
+            }
+          },
+          _meta: {
+            uuid: uuid(),
+            request_uuid: '',
+            request_type: RequestTypes.REST,
+            project_uuid: ''
           }
-        },
-        _meta: {
-          uuid: uuid(),
-          request_uuid: '',
-          request_type: RequestTypes.REST,
-          project_uuid: ''
         }
-      }
 
         _body.body['application/x-www-form-urlencoded'].value = this.querystringToTable(body || '')
 
         return _body
+      }
+
+      case 'multipart/form-data': {
+        const _body = {
+          'name': 'Default',
+          'meta': {
+            'is_default': true,
+            'active_body_type': contentType
+          },
+          'body': {
+            'multipart/form-data': {
+              'value': [],
+              'headers': []
+            }
+          },
+          _meta: {
+            uuid: uuid(),
+            request_uuid: '',
+            request_type: RequestTypes.REST,
+            project_uuid: ''
+          }
+        }
+
+        _body.body['multipart/form-data'].value = table.objectToTable(body || {})
+
+        return _body
+      }
 
       default: return {
         'name': 'Default',
