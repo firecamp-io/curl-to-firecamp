@@ -10,7 +10,7 @@ import { ICurlToFirecamp, IRestLeaf, ITableRow } from './CurlToFirecamp.interfac
 import { AuthState, BodyState } from './react-state'
 
 const { RequestTypes } = constants
-const { isValidArray, isValidObject } = helpers
+const { isValidObject } = helpers
 
 export class CurlToFirecamp implements ICurlToFirecamp {
 
@@ -168,17 +168,21 @@ export class CurlToFirecamp implements ICurlToFirecamp {
     restRequest.bodies[restRequest.meta.active_body]._meta.request_uuid = restRequest._meta.uuid
 
     // Add body_types, response in body if not exist
-    if (isValidArray(restRequest.bodies)) {
-      restRequest.bodies.map((leaf: any) => {
-        if (!leaf.body || !isValidObject(leaf.body))
-          leaf.body = _cloneDeep(BodyState)
+    if (isValidObject(restRequest.bodies)) {
+      for (const leafUUID in restRequest.bodies) {
+        if (
+          !restRequest.bodies[leafUUID].body
+          || !isValidObject(restRequest.bodies[leafUUID].body)
+        ) {
+          restRequest.bodies[leafUUID].body = _cloneDeep(BodyState)
+        }
         else {
-          leaf.body = _merge(_cloneDeep(BodyState), leaf.body)
+          restRequest.bodies[leafUUID].body = _merge(_cloneDeep(BodyState), restRequest.bodies[leafUUID].body)
         }
 
-        if (!leaf?.meta?.active_body_type)
-          leaf.meta.active_body_type = 'noBody'
-      })
+        if (!restRequest.bodies[leafUUID]?.meta?.active_body_type)
+        restRequest.bodies[leafUUID].meta.active_body_type = 'noBody'
+      }
     }
 
     // Merge auth state for populate request

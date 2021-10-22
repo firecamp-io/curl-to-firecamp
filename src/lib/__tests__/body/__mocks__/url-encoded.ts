@@ -69,7 +69,57 @@ export default {
           ],
           headers: []
         },
+        "application/graphql": {  
+          "headers": [],
+          "value": "",
+          "variables": "",
+        },
+        "application/javascript": {
+          "headers": [],
+          "value": "",
+        },
+        "application/json": {
+          "headers": [],
+          "value": "",
+        },
+        "application/xml": {
+          "headers": [],
+          "value": "",
+        },
+        "binary": {
+          "headers": [],
+          "value": "",
+        },
+        "multipart/form-data": {
+          "headers": [],
+          "value": [],
+        },
+        "protocol_buffer": {
+          "decoded_file_path": "",
+          "decoded_msg_type": "",
+          "encoded_file_path": "",
+          "encoded_msg_type": "",
+          "headers": [],
+          "proto_file_path": "",
+          "value": "",
+        },
+        "text": {
+          "headers": [],
+          "value": "",
+        },
+        "text/html": {
+          "headers": [],
+          "value": "",
+        },
+        "text/plain": {
+          "headers": [],
+          "value": "",
+        },
+        "text/xml": {
+          "headers": [],
+          "value": "",
+        },
       },
     },
   },
-};
+}
