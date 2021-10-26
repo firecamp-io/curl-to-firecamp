@@ -1,0 +1,1 @@
+curl --form "fileupload=@filename.txt" http://hostname/resource

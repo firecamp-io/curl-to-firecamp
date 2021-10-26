@@ -1,1 +1,1 @@
-export * from './lib/curl-to-firecamp';
+export * from './lib/CurlToFirecamp';
