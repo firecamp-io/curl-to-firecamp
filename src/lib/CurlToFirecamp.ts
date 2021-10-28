@@ -149,7 +149,7 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         name: 'Untitled Request',
         description: '',
         active_auth: 'no_auth',
-        active_body: uuid(),
+        active_body: '',
         type: RequestTypes.REST,
         version: '1.0'
       },
@@ -160,10 +160,15 @@ export class CurlToFirecamp implements ICurlToFirecamp {
       }
     }
 
-    // Prepare bodies payload
+    // Prepare body payload
+    const _body = this.transformRequestBody(body, header['Content-Type'] || header['content-type'])
+
     restRequest.bodies = {
-      [restRequest.meta.active_body]: this.transformRequestBody(body, header['Content-Type'] || header['content-type'])
+      [_body._meta.uuid]: _body
     }
+
+    // Set active body
+    restRequest.meta.active_body = _body._meta.uuid
 
     restRequest.bodies[restRequest.meta.active_body]._meta.request_uuid = restRequest._meta.uuid
 
@@ -181,7 +186,7 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         }
 
         if (!restRequest.bodies[leafUUID]?.meta?.active_body_type)
-        restRequest.bodies[leafUUID].meta.active_body_type = 'noBody'
+          restRequest.bodies[leafUUID].meta.active_body_type = 'noBody'
       }
     }
 
