@@ -108,9 +108,14 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         'name': 'Default',
         'meta': {
           'is_default': true,
-          'active_body_type': 'no_body'
+          'active_body_type': contentType
         },
-        'body': '',
+        body: {
+          [contentType]: {
+            value: body,
+            headers: []
+          }
+        },
         _meta: {
           uuid: uuid(),
           request_uuid: '',
