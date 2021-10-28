@@ -32,26 +32,6 @@ export class CurlToFirecamp implements ICurlToFirecamp {
 
   transformRequestBody(body: any, contentType: string): IRestLeaf {
     switch (contentType) {
-      case 'application/json': return {
-        'name': 'Default',
-        'meta': {
-          'is_default': true,
-          'active_body_type': contentType
-        },
-        'body': {
-          [contentType]: {
-            'value': body || '',
-            'headers': []
-          }
-        },
-        _meta: {
-          uuid: uuid(),
-          request_uuid: '',
-          request_type: RequestTypes.REST,
-          project_uuid: ''
-        }
-      }
-
       case 'application/x-www-form-urlencoded': {
         const _body = {
           'name': 'Default',
@@ -60,7 +40,7 @@ export class CurlToFirecamp implements ICurlToFirecamp {
             'active_body_type': contentType
           },
           'body': {
-            'application/x-www-form-urlencoded': {
+            [contentType]: {
               'value': [],
               'headers': []
             }
