@@ -171,7 +171,7 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         }
 
         if (!restRequest.bodies[leafUUID]?.meta?.active_body_type)
-          restRequest.bodies[leafUUID].meta.active_body_type = 'noBody'
+          restRequest.bodies[leafUUID].meta.active_body_type = 'no_body'
       }
     }
 
