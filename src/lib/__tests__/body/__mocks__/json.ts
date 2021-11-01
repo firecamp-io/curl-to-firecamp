@@ -55,7 +55,7 @@ export default {
           headers: []
         },
         'application/json': {
-          value: '{"key1":"value1", "key2":"value2"}',
+          value: "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\"\n}",
           headers: []
         },
         "application/graphql": {

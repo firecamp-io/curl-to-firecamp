@@ -84,23 +84,36 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         return _body
       }
 
-      default: return {
-        'name': 'Default',
-        'meta': {
-          'is_default': true,
-          'active_body_type': contentType
-        },
-        body: {
-          [contentType]: {
-            value: body,
-            headers: []
+      default: {
+        // Format the JSON string
+        if (contentType === 'application/json') {
+          try {
+            body = JSON.stringify(JSON.parse(body), null, 4)
+            console.log({body});
+            
+          } catch (error) {
+
           }
-        },
-        _meta: {
-          uuid: uuid(),
-          request_uuid: '',
-          request_type: RequestTypes.REST,
-          project_uuid: ''
+        }
+
+        return {
+          'name': 'Default',
+          'meta': {
+            'is_default': true,
+            'active_body_type': contentType
+          },
+          body: {
+            [contentType]: {
+              value: body,
+              headers: []
+            }
+          },
+          _meta: {
+            uuid: uuid(),
+            request_uuid: '',
+            request_type: RequestTypes.REST,
+            project_uuid: ''
+          }
         }
       }
     }
