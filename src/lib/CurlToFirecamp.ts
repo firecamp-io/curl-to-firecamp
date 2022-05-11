@@ -89,8 +89,8 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         if (contentType === 'application/json') {
           try {
             body = JSON.stringify(JSON.parse(body), null, 4)
-            console.log({body});
-            
+            console.log({ body });
+
           } catch (error) {
 
           }
@@ -161,7 +161,9 @@ export class CurlToFirecamp implements ICurlToFirecamp {
     // Prepare body payload
     const _body = this.transformRequestBody(body, header['Content-Type'] || header['content-type'])
 
-    restRequest.bodies = {
+    restRequest.body = _body
+
+    /* restRequest.bodies = {
       [_body._meta.uuid]: _body
     }
 
@@ -186,7 +188,7 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         if (!restRequest.bodies[leafUUID]?.meta?.active_body_type)
           restRequest.bodies[leafUUID].meta.active_body_type = 'no_body'
       }
-    }
+    } */
 
     // Merge auth state for populate request
     restRequest.auth = _merge(_cloneDeep(AuthState), restRequest.auth)
