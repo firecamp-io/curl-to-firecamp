@@ -89,8 +89,6 @@ export class CurlToFirecamp implements ICurlToFirecamp {
         if (contentType === 'application/json') {
           try {
             body = JSON.stringify(JSON.parse(body), null, 4)
-            console.log({ body });
-
           } catch (error) {
 
           }
