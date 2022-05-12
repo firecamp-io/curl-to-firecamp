@@ -43,6 +43,7 @@
     "node": ">=10"
   },
   "dependencies": {
+    "@firecamp/url": "^0.0.1",
     "@firecamp/utility": "^0.1.115",
     "nano-id": "^1.1.0",
     "parse-curl": "https://github.com/firecamp-forks/parse-curl.js.git"

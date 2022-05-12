@@ -1,16 +1,15 @@
 
 import parseCurl from 'parse-curl'
 import { parse } from 'querystring'
-import { constants, helpers, table } from '@firecamp/utility'
-import { url as _url } from '@firecamp/url'
+import { constants, table } from '@firecamp/utility'
+import * as _url from '@firecamp/url'
 import { nanoid as uuid } from "nanoid"
 import _cloneDeep from "lodash/cloneDeep"
 import _merge from "lodash/merge"
 import { ICurlToFirecamp, IRestLeaf, ITableRow } from './CurlToFirecamp.interface'
-import { AuthState, BodyState } from './react-state'
+import { AuthState } from './react-state'
 
 const { RequestTypes } = constants
-const { isValidObject } = helpers
 
 export class CurlToFirecamp implements ICurlToFirecamp {
 

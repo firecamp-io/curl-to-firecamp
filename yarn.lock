@@ -535,6 +535,35 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@firecamp/url@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@firecamp/url/-/url-0.0.1.tgz#3a59886b8e194cb664fa7f8aba65d05a5089b0cf"
+  integrity sha512-40izRGfjng2usX3oE9A9sVSoy13Kr2PKQQPpFbTm/e09P59/kqqtcj4uW1GICoKQRaiQnOFY9mhZnAcWTFm4mw==
+  dependencies:
+    "@firecamp/utility" "0.1.123"
+    lodash "^4.17.21"
+    url-parse "1.5.3"
+
+"@firecamp/utility@0.1.123":
+  version "0.1.123"
+  resolved "https://registry.yarnpkg.com/@firecamp/utility/-/utility-0.1.123.tgz#3b9bb536dafdc93ea1e19ce17589f8e0166f4ad7"
+  integrity sha512-cdr9n9BLOpQ3SpE+7YEC9/xgoSDoVFuLNhGVBIuY293IECWMoVn0h+u1dJw2xwnx3UQ37p6Z4CVL2y8WkwIGEA==
+  dependencies:
+    clean-deep "^3.3.0"
+    dedupe latest
+    deepmerge "^4.2.2"
+    faker "^5.1.0"
+    graphql "^15.1.0"
+    is-electron "^2.2.0"
+    json-templates "^4.1.0"
+    lodash "^4.17.19"
+    nanoid "3.1.22"
+    object-path latest
+    prettier "^2.1.1"
+    underscore "^1.10.2"
+    url-parse "1.4.7"
+    uuid "^8.0.0"
+
 "@firecamp/utility@^0.1.115":
   version "0.1.115"
   resolved "https://registry.yarnpkg.com/@firecamp/utility/-/utility-0.1.115.tgz#ce6e6363c56bfb0ed5e4efea383070d64f5dd92a"
@@ -4135,7 +4164,7 @@ lodash.truncate@^4.4.2:
   resolved "https://registry.yarnpkg.com/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
   integrity sha1-WjUNoLERO4N+z//VgSy+WNbq4ZM=
 
-lodash@4.x, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.7.0:
+lodash@4.x, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -5856,6 +5885,14 @@ url-parse@1.4.7:
   version "1.4.7"
   resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
   integrity sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  dependencies:
+    querystringify "^2.1.1"
+    requires-port "^1.0.0"
+
+url-parse@1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.3.tgz#71c1303d38fb6639ade183c2992c8cc0686df862"
+  integrity sha512-IIORyIQD9rvj0A4CLWsHkBBJuNqWpFQe224b6j9t/ABmquIS0qDU2pY6kl6AuOrL5OkCXHMCFNe1jBcuAggjvQ==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
